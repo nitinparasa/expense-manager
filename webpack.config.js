@@ -9,7 +9,7 @@ module.exports = (env) => {
     return {
         entry: './src/app.js',
         output: {
-            path: path.join(__dirname,'public'), // this should be an absolute path as this key cant contain "/".
+            path: path.join(__dirname,'public', 'dist'), // this should be an absolute path as this key cant contain "/".
             filename: 'bundle.js'
         },
         module: {
@@ -44,7 +44,8 @@ module.exports = (env) => {
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
             contentBase: path.join(__dirname,'public'),
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: '/dist/'
         }
     };
 };
