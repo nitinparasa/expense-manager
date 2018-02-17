@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should output the correct expense item 1`] = `
+<div>
+  <Link
+    replace={false}
+    to="/edit/2"
+  >
+     
+    <p>
+       
+      Expense 2
+    </p>
+  </Link>
+  <p>
+     
+    32
+     - 
+    -345600000
+  </p>
+</div>
+`;
