@@ -14,16 +14,6 @@ import './styles/styles.scss';
 
 const reduxStore = configureStore();
 
-// const expenseOne = reduxStore.dispatch(add_expense({ description: 'Water Bill', amount: 2532, createdAt: 21000}));
-// const expenseTwo = reduxStore.dispatch(add_expense({ description: 'Electricity Bill', amount: 3225, createdAt: -1000}));
-// const expenseThree = reduxStore.dispatch(add_expense({ description: 'December Rent', amount: 8338, createdAt: 200}));
-
-
-const state = reduxStore.getState();
-// console.log(state);
-// const filteredExpenses = getFilteredExpenses(state.expenses,state.filters);
-// console.log(filteredExpenses);
-
 const jsx = (
     <Provider store={reduxStore}>
         <AppRouter />
