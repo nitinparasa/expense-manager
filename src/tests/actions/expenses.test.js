@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {startAddingExpenses, add_expense, remove_expense, edit_expense, set_expenses, startSetExpenses, startRemoveExpense } from '../../actions/expenses';
+import {startAddingExpenses, add_expense, remove_expense, edit_expense, set_expenses, startSetExpenses, startRemoveExpense, startEditExpense } from '../../actions/expenses';
 import testData from '../fixtures/expenses';
 import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
@@ -26,6 +26,22 @@ test('should setup removing expenses', () => {
     });
 });
 
+test('should remove expense from database', (done)=> {
+    const store = createMockStore({});
+    const id = expenses[1].id;
+    store.dispatch(startRemoveExpense({ id })).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_EXPENSE',
+            id: id
+        });
+        return database.ref(`expense/${id}`).once('value');
+    }).then((snapshot) => {
+            expect(snapshot.val()).toBeFalsy();
+            done();
+        });
+});
+
 test('should setup updating expenses', () => {
     const result = edit_expense('123ab', { description: 'Test Expense'});
 
@@ -35,6 +51,29 @@ test('should setup updating expenses', () => {
         updates:{
             description: 'Test Expense'
         }
+    });
+});
+
+test('should update expense to the database', () => {
+    const store = createMockStore({});
+    const expenseData = {
+        description: 'Sample',
+        amount: 2000,
+        note:'',
+        createdAt: 23300
+    };
+    store.dispatch(startEditExpense(expenses[1].id, expenseData)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'EDIT_EXPENSE',
+            id: expenses[1].id,
+            updates: {
+                description: 'Sample',
+                amount: 2000,
+                note:'',
+                createdAt: 23300
+            }
+        });
     });
 });
 
@@ -125,18 +164,3 @@ test('should add expense with defaults to database and store', (done) => {
 //     });
 // });
 
-test('should remove expense from database', (done)=> {
-    const store = createMockStore({});
-    const id = expenses[1].id;
-    store.dispatch(startRemoveExpense({ id })).then(() => {
-        const actions = store.getActions();
-        expect(actions[0]).toEqual({
-            type: 'REMOVE_EXPENSE',
-            id: id
-        });
-        return database.ref(`expense/${id}`).once('value');
-    }).then((snapshot) => {
-            expect(snapshot.val()).toBeFalsy();
-            done();
-        });
-});
