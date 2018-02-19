@@ -48,3 +48,29 @@ export const edit_expense = (id, updates) => ({
     id,
     updates
 })
+
+// SET EXPENSES
+export const set_expenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+// ASYNC SET EXPENSES
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses').once('value')
+        .then((snapshot) => {
+            const expenses = [];
+
+            snapshot.forEach(childSnapshot => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            
+            dispatch(set_expenses(expenses));
+        })
+        .catch((err) => {console.log('Error occured while fetching data:', err)});
+    }
+}

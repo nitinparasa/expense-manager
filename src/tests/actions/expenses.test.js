@@ -1,11 +1,22 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {startAddingExpenses, add_expense, remove_expense, edit_expense } from '../../actions/expenses';
+import {startAddingExpenses, add_expense, remove_expense, edit_expense, set_expenses, startSetExpenses } from '../../actions/expenses';
 import testData from '../fixtures/expenses';
+import expenses from '../fixtures/expenses';
 import database from '../../firebase/firebase';
 import uuid from 'uuid';
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach((done) => {
+    const expenseData = {};
+
+    testData.forEach(({ id, description, amount, note, createdAt }) => {
+        expenseData[id] = { description, amount, note, createdAt };
+    });
+
+    database.ref('expenses').set(expenseData).then(() => done() );
+});
 
 test('should setup removing expenses', () => {
     const result = remove_expense({ id: '123ab'});
@@ -24,6 +35,14 @@ test('should setup updating expenses', () => {
         updates:{
             description: 'Test Expense'
         }
+    });
+});
+
+test('should setup setting expenses', () => {
+    const result = set_expenses(expenses);
+    expect(result).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
     });
 });
 
@@ -89,19 +108,19 @@ test('should add expense with defaults to database and store', (done) => {
       done();
     });
 });
-  
-// test('should setup add expense object with default values', () => {
-//     const action = add_expense();
+ 
 
-//     expect(action).toEqual({
-//         type: 'ADD_EXPENSE',
-//         expense: {
-//             id: expect.any(String),
-//             description: '',
-//             createdAt: 0,
-//             note: '',
-//             amount: 0
-//         }
+// test('should fetch the expenses from database', (done) => {
+//     const store = createMockStore();
+
+//     store.dispatch(startSetExpenses()).then(() =>{
+//         const actions = store.getActions();
+
+//         expect(actions[0]).toEqual({
+//         type: 'SET_EXPENSES',
+//         expenses
+//         }); 
+
+//         done();
 //     });
 // });
-    
