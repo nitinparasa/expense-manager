@@ -9,7 +9,8 @@ export const add_expense = (expense) => ({
 
 // Function call to firebase
 export const startAddingExpenses = (expenseData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
         const {
             description = '',
             note = '',
@@ -19,7 +20,7 @@ export const startAddingExpenses = (expenseData = {}) => {
 
         const expense = { description, note, amount, createdAt};
 
-        return database.ref('expenses').push(expense)
+        return database.ref(`users/${uid}/expenses`).push(expense)
             .then((ref) => {
                 dispatch(add_expense(
                     {
@@ -48,8 +49,9 @@ export const startRemoveExpense = ({
         id
     } = {}
 ) => {
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).remove()
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).remove()
         .then(() => {
             dispatch(remove_expense({ id }))
         })
@@ -66,8 +68,9 @@ export const edit_expense = (id, updates) => ({
 
 // Async Update expense
 export const startEditExpense = (id, updates) => {
-    return (dispatch) => {
-        return database.ref(`expenses/${id}`).update(updates)
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses/${id}`).update(updates)
         .then(() => {
             dispatch(edit_expense(id, updates))
         })
@@ -83,8 +86,9 @@ export const set_expenses = (expenses) => ({
 
 // ASYNC SET EXPENSES
 export const startSetExpenses = () => {
-    return (dispatch) => {
-        return database.ref('expenses').once('value')
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expenses`).once('value')
         .then((snapshot) => {
             const expenses = [];
 

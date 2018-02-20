@@ -8,7 +8,6 @@ exports[`should call logout on button click 1`] = `
   <NavLink
     activeClassName="isActive"
     ariaCurrent="true"
-    exact={true}
     to="/dashboard"
   >
     Dashboard
@@ -37,7 +36,6 @@ exports[`should render header properly 1`] = `
   <NavLink
     activeClassName="isActive"
     ariaCurrent="true"
-    exact={true}
     to="/dashboard"
   >
     Dashboard

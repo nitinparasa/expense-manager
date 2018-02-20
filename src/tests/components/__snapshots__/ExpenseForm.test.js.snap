@@ -27,6 +27,7 @@ exports[`should render an error for invalid form values 1`] = `
     <withStyles(SingleDatePicker)
       anchorDirection="left"
       block={false}
+      calendarInfoPosition="bottom"
       customCloseIcon={null}
       customInputIcon={null}
       date={"1970-01-01T00:00:00.000Z"}
@@ -45,6 +46,7 @@ exports[`should render an error for invalid form values 1`] = `
       isDayHighlighted={[Function]}
       isOutsideRange={[Function]}
       isRTL={false}
+      keepFocusOnInput={false}
       keepOpenOnDateSelect={false}
       monthFormat="MMMM YYYY"
       navNext={null}
@@ -64,6 +66,7 @@ exports[`should render an error for invalid form values 1`] = `
           "chooseAvailableDate": [Function],
           "clearDate": "Clear Date",
           "closeDatePicker": "Close",
+          "dateIsSelected": [Function],
           "dateIsUnavailable": [Function],
           "enterKey": "Enter key",
           "escape": "Escape key",
@@ -90,6 +93,7 @@ exports[`should render an error for invalid form values 1`] = `
       }
       placeholder="Date"
       readOnly={false}
+      regular={false}
       renderCalendarInfo={null}
       renderDayContents={null}
       renderMonth={null}
@@ -142,6 +146,7 @@ exports[`should render the Expense form correctly 1`] = `
     <withStyles(SingleDatePicker)
       anchorDirection="left"
       block={false}
+      calendarInfoPosition="bottom"
       customCloseIcon={null}
       customInputIcon={null}
       date={"1970-01-01T00:00:00.000Z"}
@@ -160,6 +165,7 @@ exports[`should render the Expense form correctly 1`] = `
       isDayHighlighted={[Function]}
       isOutsideRange={[Function]}
       isRTL={false}
+      keepFocusOnInput={false}
       keepOpenOnDateSelect={false}
       monthFormat="MMMM YYYY"
       navNext={null}
@@ -179,6 +185,7 @@ exports[`should render the Expense form correctly 1`] = `
           "chooseAvailableDate": [Function],
           "clearDate": "Clear Date",
           "closeDatePicker": "Close",
+          "dateIsSelected": [Function],
           "dateIsUnavailable": [Function],
           "enterKey": "Enter key",
           "escape": "Escape key",
@@ -205,6 +212,7 @@ exports[`should render the Expense form correctly 1`] = `
       }
       placeholder="Date"
       readOnly={false}
+      regular={false}
       renderCalendarInfo={null}
       renderDayContents={null}
       renderMonth={null}
@@ -257,6 +265,7 @@ exports[`should render the Expense form with expense data 1`] = `
     <withStyles(SingleDatePicker)
       anchorDirection="left"
       block={false}
+      calendarInfoPosition="bottom"
       customCloseIcon={null}
       customInputIcon={null}
       date={"1969-12-28T00:00:00.000Z"}
@@ -275,6 +284,7 @@ exports[`should render the Expense form with expense data 1`] = `
       isDayHighlighted={[Function]}
       isOutsideRange={[Function]}
       isRTL={false}
+      keepFocusOnInput={false}
       keepOpenOnDateSelect={false}
       monthFormat="MMMM YYYY"
       navNext={null}
@@ -294,6 +304,7 @@ exports[`should render the Expense form with expense data 1`] = `
           "chooseAvailableDate": [Function],
           "clearDate": "Clear Date",
           "closeDatePicker": "Close",
+          "dateIsSelected": [Function],
           "dateIsUnavailable": [Function],
           "enterKey": "Enter key",
           "escape": "Escape key",
@@ -320,6 +331,7 @@ exports[`should render the Expense form with expense data 1`] = `
       }
       placeholder="Date"
       readOnly={false}
+      regular={false}
       renderCalendarInfo={null}
       renderDayContents={null}
       renderMonth={null}
@@ -372,6 +384,7 @@ exports[`should set date correctly on Date change 1`] = `
     <withStyles(SingleDatePicker)
       anchorDirection="left"
       block={false}
+      calendarInfoPosition="bottom"
       customCloseIcon={null}
       customInputIcon={null}
       date={"1970-01-01T00:00:00.000Z"}
@@ -390,6 +403,7 @@ exports[`should set date correctly on Date change 1`] = `
       isDayHighlighted={[Function]}
       isOutsideRange={[Function]}
       isRTL={false}
+      keepFocusOnInput={false}
       keepOpenOnDateSelect={false}
       monthFormat="MMMM YYYY"
       navNext={null}
@@ -409,6 +423,7 @@ exports[`should set date correctly on Date change 1`] = `
           "chooseAvailableDate": [Function],
           "clearDate": "Clear Date",
           "closeDatePicker": "Close",
+          "dateIsSelected": [Function],
           "dateIsUnavailable": [Function],
           "enterKey": "Enter key",
           "escape": "Escape key",
@@ -435,6 +450,7 @@ exports[`should set date correctly on Date change 1`] = `
       }
       placeholder="Date"
       readOnly={false}
+      regular={false}
       renderCalendarInfo={null}
       renderDayContents={null}
       renderMonth={null}
@@ -487,6 +503,7 @@ exports[`should set focus on calendar onFocusChange 1`] = `
     <withStyles(SingleDatePicker)
       anchorDirection="left"
       block={false}
+      calendarInfoPosition="bottom"
       customCloseIcon={null}
       customInputIcon={null}
       date={"1970-01-01T00:00:00.000Z"}
@@ -505,6 +522,7 @@ exports[`should set focus on calendar onFocusChange 1`] = `
       isDayHighlighted={[Function]}
       isOutsideRange={[Function]}
       isRTL={false}
+      keepFocusOnInput={false}
       keepOpenOnDateSelect={false}
       monthFormat="MMMM YYYY"
       navNext={null}
@@ -524,6 +542,7 @@ exports[`should set focus on calendar onFocusChange 1`] = `
           "chooseAvailableDate": [Function],
           "clearDate": "Clear Date",
           "closeDatePicker": "Close",
+          "dateIsSelected": [Function],
           "dateIsUnavailable": [Function],
           "enterKey": "Enter key",
           "escape": "Escape key",
@@ -550,6 +569,7 @@ exports[`should set focus on calendar onFocusChange 1`] = `
       }
       placeholder="Date"
       readOnly={false}
+      regular={false}
       renderCalendarInfo={null}
       renderDayContents={null}
       renderMonth={null}
