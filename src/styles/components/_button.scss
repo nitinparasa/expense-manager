@@ -1,0 +1,18 @@
+.button{
+    background-color: $light-blue;
+    border-radius: 3px;
+    color: white;
+    display: inline-block;
+    font-weight: 300;
+    font-size: 1.8rem;
+    line-height: 1;
+    padding: $m-size $s-size;
+    text-decoration: none;
+}
+.button__logout{
+    background: transparent;
+    border: none;
+}
+.button__remove{
+    background-color: #333333 !important;
+}
